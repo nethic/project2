@@ -15,7 +15,8 @@ if (config.use_env_variable) {
     config.database,
     config.username,
     config.password,
-    config
+    config.host,
+    config.port
   );
 }
 
@@ -35,6 +36,20 @@ Object.keys(db).forEach(function(modelName) {
     db[modelName].associate(db);
   }
 });
+
+// model associations
+// -------------------------
+
+db.Accounts.hasMany(db.Wagers);
+db.Wagers.belongsTo(db.Accounts);
+
+db.Matches.hasMany(db.Wagers);
+db.Wagers.belongsTo(db.Matches);
+
+sequelize.sync();
+
+// -------------------------
+// -------------------------
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
