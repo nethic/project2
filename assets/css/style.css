@@ -1,0 +1,83 @@
+.section {
+    width: 77%;
+    background-color: #999;
+}
+.field {
+    background-color: #999;
+}
+h1 {
+    margin-top: -100px;
+}
+h2 {
+    text-align: center;
+}
+.container {
+    max-width: 1344px;
+    width: 1344px;
+    max-height: 200px;
+    background-image: url('./assets/imgs/pc_gamers_1050x700.jpg');
+}
+.position {
+    position: absolute;
+    margin: -25rem 0rem 0rem 2rem;
+}
+.column {
+    display: block;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: .75rem;
+    margin-left: 115px;
+}
+body {
+    background-color: black;
+    color: white;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+.dropdown-menu, .dropdown-trigger {
+    margin-left: 130px;
+}
+.navbar-item.has-dropdown {
+    padding: 0;
+    margin-top: 45px;
+}
+.subtitle {
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.25;
+    margin-bottom: 25px;
+}
+.title {
+    margin-top: 25px;
+    color: white;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.125;
+}
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+    visibility: hidden;
+}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 52px 25px;
+}
+li {
+    float: right;
+    font-family: arial;
+}
+
+.crop {
+    overflow:hidden;
+}
+
+.crop img {
+    margin: -75px 0 0 -100px
+}
