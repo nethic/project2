@@ -4,8 +4,8 @@
     "password": "root",
     "database": "bookieDB",
     "host": "localhost",
-    "port": 3306,
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "port": 3306
   },
   "test": {
     "username": "root",

@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
   var Accounts = sequelize.define("Accounts", {
     account_id: {
-      type: DataTypes.INT,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoincrement: true
@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     account_points: {
-      type: DataTypes.INT,
+      type: DataTypes.INTEGER,
       allowNull: false
     }
   });
