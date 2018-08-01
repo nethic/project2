@@ -19,6 +19,9 @@ var rp = require('request-promise');
 
 
 module.exports = function(app) {
+    var matchObject = []
+
+    app.post('/api/matches', function(req, res, next) {
     var options = {
         uri: 'https://api.pandascore.co/ow/matches/upcoming',
         qs: {
@@ -33,17 +36,30 @@ module.exports = function(app) {
     rp(options)
         .then(function (matches) {
             for (i = 0; i < 5; i++) {
-                console.log(matches[i].id)
-                console.log(matches[i].name)
-                console.log(matches[i].begin_at)
-                console.log(matches[i].opponents[0].opponent.name)
-                console.log(matches[i].opponents[1].opponent.name)
+                var tempMatch = {
+
+                match_id: matches[i].id,
+                match_name: matches[i].name,
+                match_start: matches[i].begin_at,
+                team_A: matches[i].opponents[0].opponent.name,
+                team_B: matches[i].opponents[1].opponent.name
+
+                }
+
+                console.log(tempMatch)
+
+                matchObject.push(tempMatch);
+
+
             }
-            //console.log(matches);
+            console.log(matchObject)
+            return matchObject;
         })
+
         .catch(function (err) {
             // API call failed...
         });
+    });
 }
 
 //  }).pipe(res); line 11

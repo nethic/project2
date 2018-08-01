@@ -1,5 +1,6 @@
 const db = require('../models');
 const path = require('path');
+require("./routes/externalAPIRoutes")
 
 // <Table Names> Accounts / Matches / Wagers (current & past wagers)
 
@@ -12,19 +13,19 @@ module.exports = function (app) {
   });
 
   // Create a new example
-  app.post("/api/matches", function (req, res) {
+  // app.post("/api/matches", function (req, res) {
 
-    db.Matches.create(      
-      {match_id: req.body.id,
-      match_name: req.body.matchName,
-      match_start: req.body.matchStart,
-      match_end: false,
-      team_A: req.body.opponents0,
-      team_B: req.body.opponents1}
-    ).then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
+  //   db.Matches.create(      
+  //     {match_id: req.body.id,
+  //     match_name: req.body.matchName,
+  //     match_start: req.body.matchStart,
+  //     match_end: false,
+  //     team_A: req.body.opponents0,
+  //     team_B: req.body.opponents1}
+  //   ).then(function(dbExample) {
+  //     res.json(dbExample);
+  //   });
+  // });
 
   // Delete an example by id
   app.delete("/api/examples/:id", function (req, res) {

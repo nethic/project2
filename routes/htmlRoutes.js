@@ -5,23 +5,23 @@ module.exports = function (app) {
 
 //Load main page.
   app.get('/', function (req, res) {
-    res.sendFile(path.resolve('../models/index.js'));
+    res.sendFile(path.resolve('./models/index.js'));
   });
 
   // app.get('/current', function (req, res) {
-  //   res.sendFile(path.resolve('../models/currentMatches.js'));
+  //   res.sendFile(path.resolve('./models/currentMatches.js'));
   // });
 
   // app.get('/upcoming', function (req, res) {
-  //   res.sendFile(path.resolve('../models/upcomingMatches.js'));
+  //   res.sendFile(path.resolve('./models/upcomingMatches.js'));
   // });
 
   // app.get('/account', function (req, res) {
-  //   res.sendFile(path.resolve('../models/account.js'));
+  //   res.sendFile(path.resolve('./models/account.js'));
   // });
 
   // app.get('/history', function (req, res) {
-  //   res.sendFile(path.resolve('../models/betHistory.js'));
+  //   res.sendFile(path.resolve('./models/betHistory.js'));
   // });
 
   // Load example page and pass in an example by id
