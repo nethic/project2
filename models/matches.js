@@ -1,13 +1,12 @@
 module.exports = function(sequelize, DataTypes) {
   var Matches = sequelize.define("Matches", {
     match_id: {
-      type: DataTypes.INT,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true
     },
     match_name: {
-      type: DataType.STRING,
+      type: DataTypes.STRING,
       allowNull: false
     },
     match_start: {
@@ -16,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     match_end: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: true
     },
     team_A: {
       type: DataTypes.STRING,

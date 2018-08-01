@@ -6,14 +6,22 @@ const path = require('path');
 module.exports = function (app) {
   // Get all examples
   app.get('/api/current', function(req, res) {
-    db.matches.findAll({}).then(function(dbExamples) {
+    db.Matches.findAll({}).then(function(dbExamples) {
       res.json(dbExamples);
     });
   });
 
   // Create a new example
-  app.post("/api/examples", function (req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
+  app.post("/api/matches", function (req, res) {
+
+    db.Matches.create(      
+      {match_id: req.body.id,
+      match_name: req.body.matchName,
+      match_start: req.body.matchStart,
+      match_end: false,
+      team_A: req.body.opponents0,
+      team_B: req.body.opponents1}
+    ).then(function(dbExample) {
       res.json(dbExample);
     });
   });

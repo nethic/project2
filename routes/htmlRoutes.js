@@ -5,26 +5,27 @@ module.exports = function (app) {
 
 //Load main page.
   app.get('/', function (req, res) {
-    res.sendFile(path.resolve('../models/index.html'));
+    res.sendFile(path.resolve('../models/index.js'));
   });
 
-  app.get('/current', function (req, res) {
-    res.sendFile(path.resolve('../models/currentMatches.html'));
-  });
+  // app.get('/current', function (req, res) {
+  //   res.sendFile(path.resolve('../models/currentMatches.js'));
+  // });
 
-  app.get('/upcoming', function (req, res) {
-    res.sendFile(path.resolve('../models/upcomingMatches.html'));
-  });
+  // app.get('/upcoming', function (req, res) {
+  //   res.sendFile(path.resolve('../models/upcomingMatches.js'));
+  // });
 
-  app.get('/account', function (req, res) {
-    res.sendFile(path.resolve('../models/account.html'));
-  });
+  // app.get('/account', function (req, res) {
+  //   res.sendFile(path.resolve('../models/account.js'));
+  // });
 
-  app.get('/history', function (req, res) {
-    res.sendFile(path.resolve('../models/betHistory.html'));
-  });
+  // app.get('/history', function (req, res) {
+  //   res.sendFile(path.resolve('../models/betHistory.js'));
+  // });
 
   // Load example page and pass in an example by id
+  //needs work
   app.get('/current/:id', function (req, res) {
     db.Upcoming.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
       res.render('example', {
@@ -33,6 +34,7 @@ module.exports = function (app) {
     });
   });
 
+  //needs work
   app.get('/upcoming/:id', function(req, res) {
     db.Upcoming.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
       res.render('example', {
