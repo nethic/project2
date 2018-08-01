@@ -1,20 +1,15 @@
 module.exports = function(sequelize, DataTypes) {
   var Matches = sequelize.define("Matches", {
     match_id: {
-      type: DataTypes.INT,
+      type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true,
-      autoIncrement: true
+      primaryKey: true
     },
     match_name: {
-      type: DataType.STRING,
+      type: DataTypes.STRING,
       allowNull: false
     },
     match_start: {
-      type: DataTypes.DATE,
-      allowNull: false
-    },
-    match_end: {
       type: DataTypes.DATE,
       allowNull: false
     },
