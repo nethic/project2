@@ -27,7 +27,8 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     match_result: {
-      type: DataTypes.BOOLEAN
+      type: DataTypes.BOOLEAN,
+      defaultValue: null
     },
   });
   return Matches;
