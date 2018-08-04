@@ -3,14 +3,19 @@ var matchesExternal = require("./externalAPIroutes");
 
 module.exports = function(app) {
   // Get upcoming matches
-  app.get("/api/matches", function(req, res) {
-    matchesExternal(function(data) {
+  app.get("/api/matches", async function(req, res) {
+    await matchesExternal(function(data) {
       var matches = data;
       matches.forEach(function(match) {
         db.Matches.upsert(match);
       });
     });
-    res.send("Working!");
+    await db.Matches.findAll({
+      limit: 5,
+      order: [["createdAt", "DESC"]]
+    }).then(function(dbMatches) {
+      res.json(dbMatches);
+    });
   });
 
   // Create a new wager
