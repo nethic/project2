@@ -14,6 +14,7 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 // Handlebars
+/*
 app.engine(
   "handlebars",
   exphbs({
@@ -21,6 +22,7 @@ app.engine(
   })
 );
 app.set("view engine", "handlebars");
+*/
 
 // Routes
 require("./routes/internalAPIroutes")(app);
