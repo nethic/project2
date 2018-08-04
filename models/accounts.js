@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     account_points: {
-      type: DataTypes.INT,
+      type: DataTypes.INTEGER,
       allowNull: false
     }
   });

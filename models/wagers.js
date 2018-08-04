@@ -1,11 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
   var Wagers = sequelize.define("Wagers", {
     match_wager: {
-      type: DataTypes.INT,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     match_returns: {
-      type: DataTypes.INT,
+      type: DataTypes.INTEGER,
     }
   });
   return Wagers;

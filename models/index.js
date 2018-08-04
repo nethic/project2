@@ -14,9 +14,12 @@ if (config.use_env_variable) {
   var sequelize = new Sequelize(
     config.database,
     config.username,
-    config.password,
-    config.host,
-    config.port
+    config.password, 
+    {
+      host: config.host,
+      port: config.port,
+      dialect: config.dialect // pick one of 'mysql','sqlite','postgres','mssql',
+    }
   );
 }
 
