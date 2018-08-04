@@ -86,6 +86,7 @@ body {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
+    height: 100rem;
 }
 .dropdown-menu, .dropdown-trigger {
     margin-left: 130px;
