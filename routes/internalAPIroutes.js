@@ -6,6 +6,7 @@ module.exports = function(app) {
   app.get("/api/matches", function(req, res) {
     matchesExternal(function(data) {
       var matches = data;
+      console.log(matches);
       matches.forEach(function(match) {
         db.Matches.upsert(match);
       });
@@ -27,3 +28,7 @@ module.exports = function(app) {
     });
   });
 };
+
+  // app.get("/", function(req, res) {
+
+  // })
