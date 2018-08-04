@@ -21,7 +21,15 @@ h2 {
     color: #5D0;
     margin: 0 auto;
 }
-
+.navbar-dropdown a.navbar-item {
+    padding-right: 3rem;
+    color: #999;
+}
+.navbar-item {
+    display: flex;
+    margin-top: .4rem;
+    color: #999;
+}
 .navbar-start {
     justify-content: flex-start;
     margin: 0rem 2rem 0rem 5rem;
@@ -31,6 +39,10 @@ h2 {
     flex-grow: 1;
     flex-shrink: 0;
     background-color: black;
+}
+.navbar-link {
+    padding-right: 2.5em;
+    color: #999;
 }
 .navbar-item {
     display: flex;

@@ -3,18 +3,13 @@ module.exports = function(sequelize, DataTypes) {
     match_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true,
-      autoIncrement: true
+      primaryKey: true
     },
     match_name: {
       type: DataTypes.STRING,
       allowNull: false
     },
     match_start: {
-      type: DataTypes.DATE,
-      allowNull: false
-    },
-    match_end: {
       type: DataTypes.DATE,
       allowNull: false
     },
@@ -32,7 +27,8 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     match_result: {
-      type: DataTypes.BOOLEAN
+      type: DataTypes.BOOLEAN,
+      defaultValue: null
     },
   });
   return Matches;
