@@ -1,15 +1,16 @@
 var db = require("../models");
-var matches = require('./externalAPIroutes');
+var matchesExternal = require("./externalAPIroutes");
 
 module.exports = function(app) {
-
   // Get upcoming matches
   app.get("/api/matches", function(req, res) {
-    matches.forEach(function(data) {
-      db.Matches.upsert(data).then(function(dbMatches) {
-        res.json(dbMatches);
+    matchesExternal(function(data) {
+      var matches = data;
+      matches.forEach(function(match) {
+        db.Matches.upsert(match);
       });
     });
+    res.send("Working!");
   });
 
   // Create a new wager
@@ -19,11 +20,10 @@ module.exports = function(app) {
     });
   });
 
-  // Delete an example by id
-  app.delete("/api/account/:id", function(req, res) {
+  // Delete account by id
+  app.delete("/api/account/delete/:id", function(req, res) {
     db.Accounts.destroy({ where: { id: req.params.id } }).then(function(dbAccounts) {
       res.json(dbAccounts);
     });
   });
-
 };

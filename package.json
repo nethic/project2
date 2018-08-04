@@ -1,25 +1,32 @@
 {
-  "name": "project2",
+  "name": "node-handlebars-boilerplate",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Project 2 Starter",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "lint": "eslint **/*.js --quiet",
+    "fix": "eslint --fix .",
+    "test": "npm run lint && NODE_ENV=test mocha -u tdd --reporter spec --exit"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
   "dependencies": {
-    "babel-eslint": "^8.2.6",
-    "eslint": "^4.18.2",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-import-resolver-webpack": "^0.8.3",
-    "eslint-loader": "1.9.0",
-    "eslint-plugin-flowtype": "2.39.1",
-    "eslint-plugin-import": "2.8.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "7.4.0",
-    "ignore": "^4.0.2"
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "mysql2": "^1.5.3",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2",
+    "sequelize": "^4.38.0"
   },
-  "description": ""
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "mocha": "^5.2.0",
+    "prettier": "^1.13.7"
+  }
 }
