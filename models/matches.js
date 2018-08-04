@@ -3,7 +3,11 @@ module.exports = function(sequelize, DataTypes) {
     match_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
+<<<<<<< HEAD
       primaryKey: true,
+=======
+      primaryKey: true
+>>>>>>> master
     },
     match_name: {
       type: DataTypes.STRING,
@@ -13,10 +17,13 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DATE,
       allowNull: false
     },
+<<<<<<< HEAD
     match_end: {
       type: DataTypes.DATE,
       allowNull: true
     },
+=======
+>>>>>>> master
     team_A: {
       type: DataTypes.STRING,
       allowNull: false
@@ -31,7 +38,8 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     match_result: {
-      type: DataTypes.BOOLEAN
+      type: DataTypes.BOOLEAN,
+      defaultValue: null
     },
   });
   return Matches;

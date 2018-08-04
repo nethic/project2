@@ -1,51 +1,24 @@
-const db = require('../models');
-const path = require('path');
+var db = require("../models");
+var path = require("path");
 
-module.exports = function (app) {
+module.exports = function(app) {
+  // Load index page
 
-//Load main page.
   app.get('/', function (req, res) {
-    res.sendFile(path.resolve('./models/index.js'));
+    res.sendFile(path.resolve('./views/index.html'));
   });
 
-  // app.get('/current', function (req, res) {
-  //   res.sendFile(path.resolve('./models/currentMatches.js'));
-  // });
+//   // Load example page and pass in an example by id
+//   app.get("/example/:id", function(req, res) {
+//     db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
+//       res.render("example", {
+//         example: dbExample
+//       });
+//     });
+//   });
 
-  // app.get('/upcoming', function (req, res) {
-  //   res.sendFile(path.resolve('./models/upcomingMatches.js'));
-  // });
-
-  // app.get('/account', function (req, res) {
-  //   res.sendFile(path.resolve('./models/account.js'));
-  // });
-
-  // app.get('/history', function (req, res) {
-  //   res.sendFile(path.resolve('./models/betHistory.js'));
-  // });
-
-  // Load example page and pass in an example by id
-  //needs work
-  app.get('/current/:id', function (req, res) {
-    db.Upcoming.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render('example', {
-        example: dbExample
-      });
-    });
-  });
-
-  //needs work
-  app.get('/upcoming/:id', function(req, res) {
-    db.Upcoming.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render('example', {
-        example: dbExample
-      });
-    });
-  });
-
-
-  // Render 404 page for any unmatched routes
-  app.get('*', function (req, res) {
-    res.render("404");
-  });
+//   // Render 404 page for any unmatched routes
+//   app.get("*", function(req, res) {
+//     res.render("404");
+//   });
 };

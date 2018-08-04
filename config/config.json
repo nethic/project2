@@ -1,10 +1,6 @@
 {
   "development": {
-    "username": "root",
-    "password": "root",
-    "database": "bookieDB",
-    "host": "localhost",
-    "port": 3306,
+    "use_env_variable": "LOCAL_DB_URL",
     "dialect": "mysql"
   },
   "test": {
