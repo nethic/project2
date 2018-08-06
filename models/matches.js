@@ -13,6 +13,11 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DATE,
       allowNull: false
     },
+    match_status: {
+      type: DataTypes.STRING,
+      defaultValue: "not_started",
+      allowNull: false
+    },
     team_A: {
       type: DataTypes.STRING,
       allowNull: false
@@ -21,15 +26,30 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    match_odds: {
-      type: DataTypes.FLOAT,
-      defaultValue: 0.5,
+    team_A_wagers: {
+      type: DataTypes.INTEGER,
+      defaultValue: 1,
       allowNull: false
     },
-    match_result: {
+    team_B_wagers: {
+      type: DataTypes.INTEGER,
+      defaultValue: 1,
+      allowNull: false
+    },
+    team_A_odds: {
+      type: DataTypes.FLOAT,
+      defaultValue: 2.0,
+      allowNull: false
+    },
+    team_B_odds: {
+      type: DataTypes.FLOAT,
+      defaultValue: 2.0,
+      allowNull: false
+    },
+    match_winner: {
       type: DataTypes.BOOLEAN,
       defaultValue: null
-    },
+    }
   });
   return Matches;
 };
