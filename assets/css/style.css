@@ -2,6 +2,19 @@
     width: 77%;
     background-color: #999;
 }
+img {
+    height: auto;
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.column {
+    display: block;
+    padding: 2rem 0rem 0rem 0rem;
+    margin: 0 auto;
+}
 .field {
     background-color: #999;
 }
@@ -14,12 +27,19 @@ h1 {
 }
 h2 {
     text-align: center;
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #999;
 }
-
 .table {
     background-color: #110;
     color: #5D0;
     margin: 0 auto;
+}
+.table thead td, .table thead th {
+    border-width: 0 0 2px;
+    color: #999;
 }
 .navbar-dropdown a.navbar-item {
     padding-right: 3rem;
@@ -32,8 +52,12 @@ h2 {
 }
 .navbar-start {
     justify-content: flex-start;
-    margin: 0rem 2rem 0rem 5rem;
+    margin: 0rem 2rem 0rem 3rem;
     background-color: black;
+}
+.navbar {
+    min-height: 2.25rem;
+    margin: 3rem 8rem -1rem 6rem;
 }
 .navbar-menu {
     flex-grow: 1;
@@ -43,10 +67,6 @@ h2 {
 .navbar-link {
     padding-right: 2.5em;
     color: #999;
-}
-.navbar-item {
-    display: flex;
-    margin-top: .4rem;
 }
 .navbar-dropdown {
     background-color: black;
@@ -62,11 +82,14 @@ h2 {
     top: 100%;
     z-index: 20;
 }
+.navbar-dropdown.is-right {
+    left: 0;
+    right: auto;
+}
 .container {
     max-width: 1344px;
     width: 1344px;
-    max-height: 370px;
-    background-image: url('./assets/imgs/pc_gamers_1050x700.jpg');
+    max-height: 100%;
 }
 .position {
     position: absolute;
@@ -78,7 +101,7 @@ h2 {
     flex-grow: 1;
     flex-shrink: 1;
     padding: 2rem 0rem 0rem 2rem;
-    margin-left: 78px;
+    margin-left: 88px;
 }
 body {
     background-color: black;
@@ -86,7 +109,6 @@ body {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    height: 100rem;
 }
 .dropdown-menu, .dropdown-trigger {
     margin-left: 130px;
@@ -103,7 +125,7 @@ body {
     margin-bottom: 25px;
 }
 .title {
-    margin-top: 25px;
+    margin-top: 216px;
     color: white;
     font-size: 2rem;
     font-weight: 600;
@@ -163,4 +185,29 @@ li a:hover, .dropdown:hover .dropbtn {
 
 li.dropdown {
     display: inline-block;
+}
+.footer {
+    background-color: black;
+    padding: 3rem 1.5rem 6rem;
+}
+.modal {
+    align-items: center;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    position: fixed;
+    z-index: 40;
+}
+.modal-card {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 40px);
+    overflow: hidden;
+    -ms-overflow-y: visible;
+}
+.modal-background {
+    background-color: rgba(10,10,10,.86);
 }

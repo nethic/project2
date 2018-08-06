@@ -4,7 +4,7 @@ var matchesExternal = require("./externalAPIroutes");
 module.exports = function(app) {
   // Get upcoming matches
   app.get("/api/matches", async function(req, res) {
-    await matchesExternal(function(data) {
+    await matchesExternal.getMatches(function(data) {
       var matches = data;
       console.log(matches);
       matches.forEach(function(match) {
@@ -32,8 +32,15 @@ module.exports = function(app) {
       res.json(dbAccounts);
     });
   });
+
+  app.get("/api/matches/update", function(req, res) {
+    matchesExternal.updateMatches(function(data) {
+      var matches = data;
+      matches.forEach(function(match) {
+        db.Matches.upsert(match);
+      });
+    });
+    res.send("Working!");
+  });
+  
 };
-
-  // app.get("/", function(req, res) {
-
-  // })
