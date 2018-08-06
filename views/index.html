@@ -7,35 +7,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/vaakash/socializer/80391a50/css/socializer.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
   
     <section class="hero">
         
-        <div class="container crop">
-            <img src="../assets/imgs/pc_gamers_1050x700.jpg" alt="gamers" class="crop">
+        <div class="container">
+            <img src="../assets/imgs/pc_gamers_cropped.jpg" alt="gamers" class="crop">
             <div class="position">
                 <h1 class="title">
                     Welcome Gamers
                 </h1>
-                    <p class="subtitle">
-                        The first video game betting Website!
-                    </p>
-            </div>
-            
-            
-
+                <p class="subtitle">
+                   The first video game betting Website!
+                </p>
+            </div>          
         </div>
+
     </section>
     
+    <!-- Navbar -->
     
-    <!-- Columns -->
-    
-    <div class="columns">
+    <div class="container">
         
-        <div class="column is-10">
-                <nav class="navbar" role="navigation" aria-label="dropdown navigation">
+                <nav class="navbar" role="navigation" class="navbar-burger" aria-label="dropdown navigation">
                         <div class="navbar-menu">
                           <div class="navbar-start">
                                 <div class="navbar-item has-dropdown is-hoverable">
@@ -68,32 +66,122 @@
 
 
                                 <div class="navbar-item has-dropdown is-hoverable">
-                                    <a class="navbar-link" href="/documentation/overview/start/">
-                                Accnt.
-                              </a>
+                                    <a class="navbar-link">Accnt.</a>
                       
                               <div class="navbar-dropdown is-right">
-                                <a class="navbar-item">
-                                  Your Stats
+                                  <a class="navbar-item" data-target="modal" id="modalActive" aria-haspopup="true">Account Info
+                                  </a>
+                                <a class="navbar-dropdown is-right">
+                                  <a class="navbar-item" data-target="modal" id="modalActive" aria-haspopup="true">Bet History
+                                  </a>
                                 </a>
-                                <a class="navbar-item">
-                                  Bet History
-                                </a>
-                                <a class="navbar-item">
-                                  Settings
+                                <a class="navbar-dropdown is-right">
+                                  <a class="navbar-item" data-target="modal" id="modalActive" aria-haspopup="true">Settings
+                                  </a>
                                 </a>
                               </div>
                             </div>
                           </div>
                         </div>
                       </nav>
-        </div>
-
     </div>
+        
+    <section class="container">
+
+      <!-- Modal 
+      <div class="columns">
+        <div class="column is 12">
+          <button class="button is-primary is-large modal-button" data-target="modal" id="modalActive" aria-haspopup="true">Account Info</button>
+        </div> 
+      </div> -->
+      
+      <div class="modal" id="accntStats">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <div>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th><abbr title="Position">Pos</abbr></th>
+                        <th>Team</th>
+                        <th><abbr title="Played">Pld</abbr></th>
+                        <th><abbr title="Won">W</abbr></th>
+                        <th><abbr title="Drawn">D</abbr></th>
+                        <th><abbr title="Lost">L</abbr></th>
+                        <th><abbr title="Points">Pts</abbr></th>
+                        <th>Qualification or relegation</th>
+                      </tr>
+                    </thead>
+                    <tfoot>
+                      <tr>
+                        <th><abbr title="Position">Pos</abbr></th>
+                        <th>Team</th>
+                        <th><abbr title="Played">Pld</abbr></th>
+                        <th><abbr title="Won">W</abbr></th>
+                        <th><abbr title="Drawn">D</abbr></th>
+                        <th><abbr title="Lost">L</abbr></th>
+                        <th><abbr title="Points">Pts</abbr></th>
+                        <th>Qualification or relegation</th>
+                      </tr>
+                    </tfoot>
+                    <tbody>
+                      <tr>
+                        <th>1</th>
+                        <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C.">Leicester City</a> <strong>(C)</strong>
+                        </td>
+                        <td>38</td>
+                        <td>23</td>
+                        <td>12</td>
+                        <td>3</td>
+                        <td>81</td>
+                        <td>Qualification for the <a href="https://en.wikipedia.org/wiki/2016%E2%80%9317_UEFA_Champions_League#Group_stage" title="2016–17 UEFA Champions League">Champions League group stage</a></td>
+                      </tr>
+                      <tr>
+                        <th>2</th>
+                        <td><a href="https://en.wikipedia.org/wiki/Arsenal_F.C." title="Arsenal F.C.">Arsenal</a></td>
+                        <td>38</td>
+                        <td>20</td>
+                        <td>11</td>
+                        <td>7</td>
+                        <td>71</td>
+                        <td>Qualification for the <a href="https://en.wikipedia.org/wiki/2016%E2%80%9317_UEFA_Champions_League#Group_stage" title="2016–17 UEFA Champions League">Champions League group stage</a></td>
+                      </tr>
+                      <tr>
+                        <th>3</th>
+                        <td><a href="https://en.wikipedia.org/wiki/Tottenham_Hotspur_F.C." title="Tottenham Hotspur F.C.">Tottenham Hotspur</a></td>
+                        <td>38</td>
+                        <td>19</td>
+                        <td>13</td>
+                        <td>6</td>
+                        <td>70</td>
+                        <td>Qualification for the <a href="https://en.wikipedia.org/wiki/2016%E2%80%9317_UEFA_Champions_League#Group_stage" title="2016–17 UEFA Champions League">Champions League group stage</a></td>
+                      </tr>
+                      <tr class="is-selected">
+                        <th>4</th>
+                        <td><a href="https://en.wikipedia.org/wiki/Manchester_City_F.C." title="Manchester City F.C.">Manchester City</a></td>
+                        <td>38</td>
+                        <td>19</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>66</td>
+                        <td>Qualification for the <a href="https://en.wikipedia.org/wiki/2016%E2%80%9317_UEFA_Champions_League#Play-off_round" title="2016–17 UEFA Champions League">Champions League play-off round</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+          </div>
+          <button class="modal-close is-large" aria-label="close"></button>
+      </div>
+
+    </section>
     
+
     <section class="container">
         <div class="columns"></div>
             <div class="column is-10">
+              <div>
+                <h2>Current Game Data</h2>
+              </div>
                 
                     <table class="table">
                             <thead>
@@ -396,9 +484,11 @@
                           <footer class="footer">
                                 <div class="content has-text-centered">
                                   <p>
-                                    <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-                                    <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-                                    is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+                                    <strong>Gambling Gamers</strong> by <a href="https://www.linkedin.com/in/osei-thompson
+                                    ">Osei Thompson,</a>
+                                    <a href="www.linkedin.com/in/victor
+                                    ">Victor</a> and
+                                    <a href="www.linkedin.com/in/ryan">Ryan</a>.
                                   </p>
                                 </div>
                               </footer>
@@ -407,4 +497,21 @@
     </section>
   
 </body>
+<script
+       src="https://code.jquery.com/jquery-3.3.1.js"
+       integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+       crossorigin="anonymous">
+   </script>
+<script>$("#modalActive").on("click", function() {
+        $("#accntStats").toggleClass("is-active");
+        });
+        
+        $(".modal-close").on("click", function() {
+        $("#accntStats").toggleClass("is-active");
+        });
+
+        $(".modal-background").on("click", function() {
+        $("#accntStats").toggleClass("is-active");
+        });
+</script>
 </html>
