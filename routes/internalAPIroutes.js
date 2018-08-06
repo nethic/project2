@@ -30,10 +30,12 @@ module.exports = function(app) {
         var wagerObj = {
           wager_team: req.body.wager_team,
           wager_amount: req.body.wager_amount,
-          account_id: req.body.account_id,
-          match_id: req.body.match_id
+          match_id: req.body.match_id,
+          accound_id: req.body.account_id
         }
-        await db.Wagers.create(wagerObj).then(function() {
+        await db.Wagers.create(wagerObj, {
+          include: [db.Matches, db.Accounts]
+        }).then(function() {
           res.json( { message: "Wager accepted!" } );
         });
         db.Matches.findOne({
