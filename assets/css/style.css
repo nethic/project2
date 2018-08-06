@@ -55,6 +55,10 @@ h2 {
     margin: 0rem 2rem 0rem 3rem;
     background-color: black;
 }
+.navbar {
+    min-height: 2.25rem;
+    margin: 3rem 8rem -1rem 6rem;
+}
 .navbar-menu {
     flex-grow: 1;
     flex-shrink: 0;
