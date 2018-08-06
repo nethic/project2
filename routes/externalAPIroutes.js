@@ -37,7 +37,7 @@ module.exports = function(callback) {
 // /api/matches/update
 function updateMatches() {
   var options = {
-    uri: "shttps://api.pandascore.co/ow/matches/past",
+    uri: "https://api.pandascore.co/ow/matches/past",
     qs: {
       token: process.env.PANDA_KEY // -> uri + '?access_token=xxxxx%20xxxxx'
     },
@@ -49,17 +49,18 @@ function updateMatches() {
 
   //not done yet, going to do api call from past event URL, compare IDs, update result boolean based on string match.
   rp(options).then(function(matches) {
-    for (i = 0; i < matches.length; i++) {
+    var iti = 0;
+    while (iti < matches.length) {
 
       //find id in Table matching api id.
-      Matches.find({ where: { match_id: matches[i].id } })
-      .on('success', function (tempWinner) {
+      Matches.find({ where: { match_id: matches[iti].id } })
+      .on('success', function () {
       // if statement checking if name === a or b
         var tempWinner
-        if (matches[id].winner.name === matches[i].opponents[0].opponent.name) {
+        if (matches[iti].winner.name === matches[iti].opponents[0].opponent.name) {
           tempWinner = true;
         }
-        else if (matches[id].winner.name === matches[i].opponents[1].opponent.name) {
+        else if (matches[iti].winner.name === matches[iti].opponents[1].opponent.name) {
           tempWinner = false;
         };
         //sequelize update if variable is 
@@ -70,7 +71,7 @@ function updateMatches() {
           .success(function () {})
         }
       })
-      
+      i++
     }
   })
 };

@@ -7,7 +7,7 @@ var path = require("path");
 var db = require("./models");
 
 var app = express();
-var PORT = process.env.PORT || 8080;
+var PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -27,16 +27,10 @@ app.engine(
 =======
 app.set("view engine", "handlebars");
 */
->>>>>>> 1a7c168c8ff7bb9796a1307c35973bfe8edde59c
 
 // Routes
-<<<<<<< HEAD
-require("./routes/internalAPIRoutes")(app);
-=======
 require("./routes/internalAPIroutes")(app);
->>>>>>> master
 require("./routes/htmlRoutes")(app);
-require("./routes/externalAPIRoutes")(app);
 
 var syncOptions = { force: false };
 

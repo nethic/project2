@@ -11,23 +11,12 @@ var db = {};
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable], "mysql");
 } else {
-<<<<<<< HEAD
-  var sequelize = new Sequelize({
-    database: config.database,
-    username: config.username,
-    password: config.password,
-    host: config.host,
-    port: config.port,
-    dialect: config.dialect
-  });
-=======
   var sequelize = new Sequelize(
     config.database,
     config.username,
     config.password,
     config
   );
->>>>>>> master
 }
 
 fs.readdirSync(__dirname)
