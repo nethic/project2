@@ -24,7 +24,7 @@ module.exports = function(app) {
   });
 
   // Create a new wager
-  app.post("/api/wager", function(req, res) {
+  app.post("/api/wager/place", function(req, res) {
     matchesExternal.matchStatus(req.body.match_id, async function(status) {
       if (status === "not_started") {
         var wagerObj = {
@@ -82,16 +82,46 @@ module.exports = function(app) {
             }
           }
         ).then(function() {
-          res.json( { message: "That match has already begun!" } );
+          res.json( { message: "That match has already finished!" } );
         });
       }
     });
   });
 
+  // View all wagers
+  app.get("/api/wagers/view", function() {
+    db.Wagers.findAll().then(function(data) {
+      res.json(data);
+    });
+  });
+
+  // Update wager result and associated models
+  app.put("/api/wager/update", function(req, res) {
+    matchesExternal.matchStatus(req.body.match_id, function(status, winner) {
+      if (status === "finished") {
+        db.Matches.update(
+          {
+            match_status: "finished",
+            match_winner: winner.name
+          },
+          {
+            where: {
+              match_id: req.body.match_id
+            }
+          }
+        ).then(function() {
+          res.json( { message: "That match has already finished!" } );
+        });
+      }
+    });
+  });
+
+  /*
   // Delete account by id
   app.delete("/api/account/delete/:id", function(req, res) {
     db.Accounts.destroy({ where: { id: req.params.id } }).then(function(dbAccounts) {
       res.json(dbAccounts);
     });
   });
+  */
 };
