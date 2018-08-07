@@ -25,7 +25,7 @@ module.exports = function(app) {
 
   // Create a new wager
   app.post("/api/wager/place", function(req, res) {
-    matchesExternal.matchStatus(req.body.match_id, async function(status) {
+    matchesExternal.matchStatus(req.body.match_id, async function(status, winner) {
       if (status === "not_started") {
         var wagerObj = {
           wager_team: req.body.wager_team,
@@ -43,7 +43,6 @@ module.exports = function(app) {
             match_id: req.body.match_id
           }
         }).then(function(data) {
-          console.log(data);
           if (req.body.wager_team === data.team_A) {
             var new_A_wagers = data.team_A_wagers + req.body.wager_amount;
             var new_B_wagers = data.team_B_wagers;
@@ -74,7 +73,7 @@ module.exports = function(app) {
         db.Matches.update(
           {
             match_status: "finished",
-            match_winner: data.winner.name
+            match_winner: winner.name
           },
           {
             where: {
@@ -82,7 +81,9 @@ module.exports = function(app) {
             }
           }
         ).then(function() {
-          res.json( { message: "That match has already finished!" } );
+          res.json({
+            message: "That match has already finished!"
+          });
         });
       }
     });
@@ -96,23 +97,53 @@ module.exports = function(app) {
   });
 
   // Update wager result and associated models
+  // Incorporate user accounts when implemented
   app.put("/api/wager/update", function(req, res) {
-    matchesExternal.matchStatus(req.body.match_id, function(status, winner) {
-      if (status === "finished") {
-        db.Matches.update(
-          {
-            match_status: "finished",
-            match_winner: winner.name
-          },
-          {
-            where: {
-              match_id: req.body.match_id
-            }
-          }
-        ).then(function() {
-          res.json( { message: "That match has already finished!" } );
-        });
+    db.Wagers.findOne({
+      where: {
+        wager_id: req.body.wager_id
       }
+    }).then(function(wager) {
+      matchesExternal.matchStatus(wager.match_id, function(status, winner) {
+        if (status === "finished") {
+          db.Matches.update(
+            {
+              match_status: "finished",
+              match_winner: winner.name
+            },
+            {
+              where: {
+                match_id: wager.match_id
+              }
+            }
+          ).then(function() {
+            if (wager.wager_team === winner.name) {
+              db.Matches.findOne({
+                where: {
+                  match_id: wager.match_id
+                }
+              }).then(function(match) {
+                if (winner.name === match.team_A) {
+                  var winnings = wager.wager_amount * match.team_A_odds;
+                } else if (winner.name === match.team_B) {
+                  var winnings = wager.wager_amount * match.team_A_odds;
+                }
+                res.json({
+                  message: `You won ${winnings}!`
+                });
+              });
+            } else if (wager.wager_team !== winner.name) {
+              res.json({
+                message: "You lost. Better luck next time!"
+              });
+            }
+          });
+        } else if (status !== "finished") {
+          res.json({
+            message: "That match hasn't finished yet!"
+          });
+        }
+      });
     });
   });
 
