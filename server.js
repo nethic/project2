@@ -12,7 +12,7 @@ var PORT = process.env.PORT || 3007;
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static("public"));
+app.use(express.static("./assets"));
 
 // Handlebars
 /*
