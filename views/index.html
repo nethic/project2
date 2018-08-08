@@ -501,6 +501,8 @@
 </script>
 
 <script>
+      
+      var matches = ["Upcoming Matches", "Previous Matches"];
 
       function displayUpcomingMatches() {
 
@@ -515,10 +517,28 @@
           console.log(response);
         });
         }
+        
+        for (var i = 0; i < matches.length; i++) {
 
+        // Then dynamically generating buttons for each movie in the array
+        // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
+        var a = $("<button>");
+        // Adding a class of movie to our button
+        a.addClass("schedule");
+        // Adding a data-attribute
+        a.attr("data-name", matches[i]);
+        // Providing the initial button text
+        a.text(matches[i]);
+        // Adding the button to the buttons-view div
+        }
+        
         $("#modalActive").on("click", function(displayUpcomingMatches) {
-        $("#accntStats").toggleClass("is-active");
+          matches.push(schedule);
+          console.log(matches);
+          $("#accntStats").toggleClass("is-active");
         });
+        
+        $(document).on("click", ".schedule", displayUpcomingMatches);
         
         $(".modal-close").on("click", function() {
         $("#accntStats").toggleClass("is-active");
