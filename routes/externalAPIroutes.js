@@ -1,5 +1,6 @@
 require("dotenv").config();
 var rp = require("request-promise");
+var db = require("../models"); //added because db was not defined
 
 var matchesArr = [];
 

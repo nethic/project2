@@ -2,11 +2,12 @@ require("dotenv").config();
 var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
+var path = require("path");
 
 var db = require("./models");
 
 var app = express();
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 3007;
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -21,6 +22,9 @@ app.engine(
     defaultLayout: "main"
   })
 );
+<<<<<<< HEAD
+//app.set("view engine", "handlebars");
+=======
 app.set("view engine", "handlebars");
 */
 

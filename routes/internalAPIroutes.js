@@ -6,6 +6,7 @@ module.exports = function(app) {
   app.get("/api/matches/update", async function(req, res) {
     await matchesExternal.newMatches(function(data) {
       var matches = data;
+      console.log(matches);
       matches.forEach(function(match) {
         db.Matches.upsert(match);
       });
