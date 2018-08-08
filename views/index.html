@@ -14,6 +14,9 @@
   <body>
   
     <section class="hero">
+
+      <!-- testing ajax call -->
+
         
         <div class="container">
             <img src="../assets/imgs/pc_gamers_cropped.jpg" alt="gamers" class="crop">
@@ -94,6 +97,8 @@
           <button class="button is-primary is-large modal-button" data-target="modal" id="modalActive" aria-haspopup="true">Account Info</button>
         </div> 
       </div> -->
+
+      <button id="test">Test</button>
       
       <div class="modal" id="accntStats">
           <div class="modal-background"></div>
@@ -513,5 +518,16 @@
         $(".modal-background").on("click", function() {
         $("#accntStats").toggleClass("is-active");
         });
+
+        $("#test").on("click", function() {
+          
+          $.ajax({
+                url: "./api/matches/object", //(or whatever endpoint you want)
+                //data: JSON.stringify(data),
+                method: "GET"   
+          }).then(function(response) {
+              console.log(response)
+          })
+        })
 </script>
 </html>

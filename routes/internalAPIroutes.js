@@ -42,5 +42,10 @@ module.exports = function(app) {
     });
     res.send("Working!");
   });
-  
+
+  //testing
+  app.get('/api/matches/object', function (req, res) {
+    res.send('Hello World!')
+    })
+
 };
