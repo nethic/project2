@@ -1,51 +1,36 @@
-var db = require("../models");
-var matchesExternal = require("./externalAPIroutes");
+const db = require('../models');
+const path = require('path');
+require("./routes/externalAPIRoutes")
 
-module.exports = function(app) {
-  // Get upcoming matches
-  app.get("/api/matches", async function(req, res) {
-    await matchesExternal.getMatches(function(data) {
-      var matches = data;
-      console.log(matches);
-      matches.forEach(function(match) {
-        db.Matches.upsert(match);
-      });
-    });
-    await db.Matches.findAll({
-      limit: 5,
-      order: [["createdAt", "DESC"]]
-    }).then(function(dbMatches) {
-      res.json(dbMatches);
+// <Table Names> Accounts / Matches / Wagers (current & past wagers)
+
+module.exports = function (app) {
+  // Get all examples
+  app.get('/api/current', function(req, res) {
+    db.Matches.findAll({}).then(function(dbExamples) {
+      res.json(dbExamples);
     });
   });
 
-  // Create a new wager
-  app.post("/api/wager", function(req, res) {
-    db.Wager.create(req.body).then(function(dbWagers) {
-      res.json(dbWagers);
+  // Create a new example
+  // app.post("/api/matches", function (req, res) {
+
+  //   db.Matches.create(      
+  //     {match_id: req.body.id,
+  //     match_name: req.body.matchName,
+  //     match_start: req.body.matchStart,
+  //     match_end: false,
+  //     team_A: req.body.opponents0,
+  //     team_B: req.body.opponents1}
+  //   ).then(function(dbExample) {
+  //     res.json(dbExample);
+  //   });
+  // });
+
+  // Delete an example by id
+  app.delete("/api/examples/:id", function (req, res) {
+    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
+      res.json(dbExample);
     });
   });
-
-  // Delete account by id
-  app.delete("/api/account/delete/:id", function(req, res) {
-    db.Accounts.destroy({ where: { id: req.params.id } }).then(function(dbAccounts) {
-      res.json(dbAccounts);
-    });
-  });
-
-  app.get("/api/matches/update", function(req, res) {
-    matchesExternal.updateMatches(function(data) {
-      var matches = data;
-      matches.forEach(function(match) {
-        db.Matches.upsert(match);
-      });
-    });
-    res.send("Working!");
-  });
-
-  //testing
-  app.get('/api/matches/object', function (req, res) {
-    res.send('Hello World!')
-    })
-
 };
