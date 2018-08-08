@@ -39,11 +39,11 @@ Object.keys(db).forEach(function(modelName) {
 // model associations
 // -------------------------
 
-db.Accounts.hasMany(db.Wagers);
-db.Wagers.belongsTo(db.Accounts);
+db.Accounts.hasMany(db.Wagers, {foreignKey: 'account_id'});
+db.Wagers.belongsTo(db.Accounts, {foreignKey: 'account_id'});
 
-db.Matches.hasMany(db.Wagers);
-db.Wagers.belongsTo(db.Matches);
+db.Matches.hasMany(db.Wagers, {foreignKey: 'match_id'});
+db.Wagers.belongsTo(db.Matches, {foreignKey: 'match_id'});
 
 sequelize.sync();
 
