@@ -6,7 +6,7 @@
     <title>Gambling Gamers!</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
-    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../public/styles/styles.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/vaakash/socializer/80391a50/css/socializer.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
@@ -42,11 +42,7 @@
                               </a>
                       
                               <div class="navbar-dropdown">
-                                <a class="navbar-item">
-                                  Current Matches
-                                </a>
-                                <a class="navbar-item">
-                                  Upcoming Matches
+                                <a class="navbar-item" data-target="modal" id="modalActive" aria-haspopup="true">Upcoming Matches
                                 </a>
                                 <a class="navbar-item">
                                   Previous Matches
@@ -484,11 +480,12 @@
                           <footer class="footer">
                                 <div class="content has-text-centered">
                                   <p>
-                                    <strong>Gambling Gamers</strong> by <a href="https://www.linkedin.com/in/osei-thompson
-                                    ">Osei Thompson,</a>
+                                    <strong>Gambling Gamers</strong> by 
+                                    <a href="www.linkedin.com/in/ryan">Ryan Sadler</a>.
                                     <a href="www.linkedin.com/in/victor
                                     ">Victor</a> and
-                                    <a href="www.linkedin.com/in/ryan">Ryan</a>.
+                                    <a href="https://www.linkedin.com/in/osei-thompson
+                                    ">Osei Thompson,</a>
                                   </p>
                                 </div>
                               </footer>
@@ -501,8 +498,25 @@
        src="https://code.jquery.com/jquery-3.3.1.js"
        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
        crossorigin="anonymous">
-   </script>
-<script>$("#modalActive").on("click", function() {
+</script>
+
+<script>
+
+      function displayUpcomingMatches() {
+
+        var schedule = $(this).attr("data-name");
+        var queryURL = "./api/matches/object";
+        
+        $.ajax({
+          url: queryURL,
+          data: JSON.stringify(data),
+          method: "GET"
+        }).then(function(response) {
+          console.log(response);
+        });
+        }
+
+        $("#modalActive").on("click", function(displayUpcomingMatches) {
         $("#accntStats").toggleClass("is-active");
         });
         
@@ -514,4 +528,5 @@
         $("#accntStats").toggleClass("is-active");
         });
 </script>
+
 </html>
