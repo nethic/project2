@@ -22,9 +22,6 @@ app.engine(
     defaultLayout: "main"
   })
 );
-<<<<<<< HEAD
-//app.set("view engine", "handlebars");
-=======
 app.set("view engine", "handlebars");
 */
 

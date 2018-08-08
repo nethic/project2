@@ -67,9 +67,9 @@ module.exports = function(app) {
             }
           );
         });
-        // --------------------------------------------------
+        // ==============================================================
         // Update user account points here when accounts are implemented
-        // --------------------------------------------------
+        // ==============================================================
       } else if (status === "finished") {
         db.Matches.update(
           {
@@ -98,7 +98,9 @@ module.exports = function(app) {
   });
 
   // Update wager result and associated models
+  // ===========================================
   // Incorporate user accounts when implemented
+  // ===========================================
   app.put("/api/wager/update", function(req, res) {
     db.Wagers.findOne({
       where: {
