@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>The Gaming Room</title>
+  </head>
+  <body>
+
+    <div class='container-fluid'>
+
+        <div class='row'>
+            <div class='col d-flex'>
+                <h1 class='mx-auto my-3'>The Gaming Room</h1>
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class='col d-flex flex-column'>
+                <button class='btn btn-success mx-auto my-3' id='update-matches-btn'>Update Upcoming Matches</button>
+                <span class='mx-auto'>Enter team name exactly or it won't work. Thanks, we trust you.</span><input class='team-input mx-auto my-3'>
+                <span class='mx-auto'>Enter points to wager as a positive integer, please.</span><input class='wager-input mx-auto my-3'>
+                <button class='btn btn-success mx-auto my-3' id='view-matches-btn'>View Upcoming Matches</button>
+                <div class='d-flex flex-column' id='matches-tray'></div>
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class='col d-flex flex-column'>
+                <button class='btn btn-success mx-auto my-3' id='view-wagers-btn'>View Wagers</button>
+                <div class='d-flex flex-column' id='wagers-tray'></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <script>
+    
+        $('#update-matches-btn').on('click', function() {
+            $.get('/api/matches/update');
+        });
+    
+        $('#view-matches-btn').on('click', function() {
+            $.get('/api/matches/view').then(function(data) {
+                data.forEach(function(match) {
+                    var matchData = $('<h5>').text(`${match.match_name} | ${match.match_start} | ${match.team_A} | ${match.team_B} | ${match.team_A_odds} | ${match.team_B_odds}`);
+                    //  var wagerInput = $('<input>').addClass(match.match_id);
+                    var wagerBtn = $('<button>').addClass('btn btn-success mx-auto my-1 wager-btn').attr('data-id', match.match_id).attr('data-name', match.match_name).text('Wager');
+                    var newDiv = $('<div>').append(matchData, wagerBtn).addClass('d-flex flex-column my-2 mx-auto');
+                    $('#matches-tray').append(newDiv);
+
+                    //div containing data-value = match_id, button 
+                });
+            });
+        });
+
+        $('.container-fluid').on('click', '.wager-btn', function() {
+            console.log('test');
+
+            var wagerObj = {
+                match_id: $(this).attr('data-id'),
+                match_name: $(this).attr('data-name'),
+                wager_team: $('.team-input').val(),
+                wager_amount: $('.wager-input').val()
+            }
+            console.log(wagerObj);
+            $.post('/api/wager/place', wagerObj).then(function(res) {
+                console.log(res);
+            });
+        });
+
+        $('#view-wagers-btn').on('click', function() {
+            $.get('/api/wagers/view').then(function(data) {
+                console.log(data);
+                data.forEach(function(wager) {
+                    var wagerData = $('<h5>').text(`${wager.wager_id} | ${wager.wager_team} | ${wager.wager_amount} | ${wager.match_id}`);
+                    var claimBtn = $('<button>').addClass('btn btn-success mx-auto my-1 claim-btn').attr('data-id', wager.wager_id).text('Claim Wager');
+                    var newDiv = $('<div>').append(wagerData, claimBtn).addClass('d-flex flex-column my-2 mx-auto');
+                    $('#wagers-tray').append(newDiv);
+                });
+            });
+        });
+    
+    </script>
+
+  </body>
+</html>

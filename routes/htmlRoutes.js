@@ -5,7 +5,7 @@ module.exports = function(app) {
   // Load index page
 
   app.get('/', function (req, res) {
-    res.sendFile(path.resolve('./views/index.html'));
+    res.sendFile(path.resolve('./views/indexAlt.html'));
   });
 
 //   // Load example page and pass in an example by id
