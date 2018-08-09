@@ -3,6 +3,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
 var path = require("path");
+var cors = require('cors')
 
 var db = require("./models");
 
@@ -13,6 +14,7 @@ var PORT = process.env.PORT || 3007;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("./assets"));
+app.use(cors());
 
 // Handlebars
 /*

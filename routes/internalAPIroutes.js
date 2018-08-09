@@ -91,7 +91,7 @@ module.exports = function(app) {
   });
 
   // View all wagers
-  app.get("/api/wagers/view", function() {
+  app.get("/api/wagers/view", function(req, res) {
     db.Wagers.findAll().then(function(data) {
       res.json(data);
     });
